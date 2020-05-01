@@ -11,7 +11,7 @@ namespace GoalTracker
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new HomePage());
+            MainPage = new NavigationPage(new CalendarPage());
         }
 
         protected override void OnStart()

@@ -12,11 +12,8 @@
         <local:CalendarPageViewModel/>
     </ContentPage.BindingContext>
 
-    <!--<ContentPage.Content>-->
-    <!--<ContentPage.Content>-->
     <Grid BackgroundColor="Gray" RowSpacing=".6" ColumnSpacing=".6">
-        <!--<Label Text="Input:" Padding="10" FontSize="Large"></Label>
-        <Entry BindingContext="TestMember"></Entry>-->
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -24,6 +21,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -37,13 +35,14 @@
         <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="White"/>
         <Label Grid.Row="0" Grid.Column="0" Text="1" Margin="2,0">
             <Label.GestureRecognizers>
-                <!--Tapped="TestTapped" NumberOfTapsRequired="1"-->
                 <TapGestureRecognizer Command="{Binding TapCommand}"/>
             </Label.GestureRecognizers>
         </Label>
 
-        <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="1" Text="2" Margin="2,0"/>
+        <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="White"/>        
+        <Label Grid.Row="0" Grid.Column="1" Text="2" Margin="2,0">
+                
+        </Label>
 
         <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="White"/>
         <Label Grid.Row="0" Grid.Column="2" Text="3" Margin="2,0"/>
@@ -93,5 +92,5 @@
         <BoxView Grid.Row="4" Grid.Column="6" BackgroundColor="White"/>
 
     </Grid>
-    <!--</ContentPage.Content>-->
+    
 </ContentPage>
