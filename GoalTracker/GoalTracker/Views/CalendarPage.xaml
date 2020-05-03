@@ -6,15 +6,30 @@
              xmlns:local="clr-namespace:GoalTracker"
              mc:Ignorable="d"
              x:Class="GoalTracker.Views.CalendarPage"
-             Title="Calendar">
+             >
 
     <ContentPage.BindingContext>
         <local:CalendarPageViewModel/>
     </ContentPage.BindingContext>
 
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Image Grid.Column="0" Source="leftArrow.png" Margin="3,10,17,10" HorizontalOptions="Center"/>
+            <Label Text="{Binding Month}" Grid.Column="1" Margin="0,0,20,0" TextColor="White" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Image Grid.Column="2" Source="rightArrow.png" Margin="0,10,20,10" HorizontalOptions="Center"/>
+        </Grid>    
+    </NavigationPage.TitleView>
+    
     <Grid BackgroundColor="Gray" RowSpacing=".6" ColumnSpacing=".6">
         
         <Grid.RowDefinitions>
+            <RowDefinition Height=".25*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -32,35 +47,41 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!--DAY LABELS-->
         <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="0" Text="1" Margin="2,0">
+        <Label Grid.Row="0" Grid.Column="0" Text="Mon" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="1" Text="Tue" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="2" Text="Wed" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="3" Text="Thu" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <BoxView Grid.Row="0" Grid.Column="4" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="4" Text="Fri" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="5" Text="Sat" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        
+        <BoxView Grid.Row="0" Grid.Column="6" BackgroundColor="White"/>
+        <Label Grid.Row="0" Grid.Column="6" Text="Sun" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+        <!--DAYS 1-7-->        
+        <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="White"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="1" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}"/>
             </Label.GestureRecognizers>
         </Label>
-
-        <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="White"/>        
-        <Label Grid.Row="0" Grid.Column="1" Text="2" Margin="2,0">
-                
-        </Label>
-
-        <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="2" Text="3" Margin="2,0"/>
-
-        <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="3" Text="4" Margin="2,0"/>
-
-        <BoxView Grid.Row="0" Grid.Column="4" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="4" Text="5" Margin="2,0"/>
-
-        <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="5" Text="6" Margin="2,0"/>
-
-        <BoxView Grid.Row="0" Grid.Column="6" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="6" Text="7" Margin="2,0"/>
-
-        <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="White"/>
         <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="White"/>
+        <Label Grid.Row="1" Grid.Column="1" Text="2" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
         <BoxView Grid.Row="1" Grid.Column="2" BackgroundColor="White"/>
         <BoxView Grid.Row="1" Grid.Column="3" BackgroundColor="White"/>
         <BoxView Grid.Row="1" Grid.Column="4" BackgroundColor="White"/>
@@ -90,6 +111,14 @@
         <BoxView Grid.Row="4" Grid.Column="4" BackgroundColor="White"/>
         <BoxView Grid.Row="4" Grid.Column="5" BackgroundColor="White"/>
         <BoxView Grid.Row="4" Grid.Column="6" BackgroundColor="White"/>
+
+        <BoxView Grid.Row="5" Grid.Column="0" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="3" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="4" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="5" BackgroundColor="White"/>
+        <BoxView Grid.Row="5" Grid.Column="6" BackgroundColor="White"/>
 
     </Grid>
     
