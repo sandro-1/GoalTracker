@@ -1,8 +1,10 @@
-﻿using GoalTracker.Views;
+﻿using GoalTracker.Models;
+using GoalTracker.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -26,12 +28,27 @@ namespace GoalTracker
             TapCommand = new Command(OnTapped);
             Month = DateTime.Now.ToString("MMMM");
         }
-        
+        //protected override async void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    var result = await App.Database.GetCalendarAsync();
+        //    Month = result.FirstOrDefault().MonthList.FirstOrDefault().MonthName;
+        //}
         public ICommand TapCommand { get; }
         async void OnTapped()
         {
-            DailyDetailsPage dailyPage = new DailyDetailsPage();
-            await Application.Current.MainPage.Navigation.PushAsync(dailyPage);
+            DailyDetails dailyDetailTestInput = new DailyDetails
+            {
+                Day = "Day 1 Test",
+                Month = "Month 1 Test",
+                Year = "Year 1 Test"
+            };
+
+            await App.Database.SaveDetailAsync(dailyDetailTestInput);
+            var result = await App.Database.GetDetailAsync();
+
+            //DailyDetailsPage dailyPage = new DailyDetailsPage();
+            //await Application.Current.MainPage.Navigation.PushAsync(dailyPage);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
