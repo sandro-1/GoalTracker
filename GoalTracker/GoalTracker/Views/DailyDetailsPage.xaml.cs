@@ -12,6 +12,7 @@ namespace GoalTracker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DailyDetailsPage : ContentPage
     {
+        public int passedParameter;
         public DailyDetailsPage()
         {
             InitializeComponent();

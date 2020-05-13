@@ -6,6 +6,10 @@
              mc:Ignorable="d"
              x:Class="GoalTracker.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="DodgerBlue"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

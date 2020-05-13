@@ -7,13 +7,9 @@
              mc:Ignorable="d"
              x:Class="GoalTracker.Views.DailyDetailsPage">
 
-    <ContentPage.BindingContext>
-        <local:DailyDetailsViewModel/>
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Daily Details!"
+            <Label Text="{Binding testModel.Day}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

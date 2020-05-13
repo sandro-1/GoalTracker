@@ -20,6 +20,5 @@ namespace GoalTracker.Models
         string Goal6 { get; set; }
         string Goal7 { get; set; }
         string Goal8 { get; set; }
-
     }
 }
