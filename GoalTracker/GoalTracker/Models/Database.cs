@@ -25,5 +25,10 @@ namespace GoalTracker.Models
         {
             return _database.InsertAsync(detail);
         }
+
+        public Task<int> DeleteEverythingAsync()
+        {
+            return _database.DropTableAsync<DailyDetails>();
+        }
     }
 }

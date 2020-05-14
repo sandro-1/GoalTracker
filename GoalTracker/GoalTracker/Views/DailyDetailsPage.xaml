@@ -3,15 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:GoalTracker.ViewModels"
+             xmlns:local="clr-namespace:GoalTracker"
              mc:Ignorable="d"
              x:Class="GoalTracker.Views.DailyDetailsPage">
 
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding testModel.Day}"
+            <Entry Placeholder="Goal 1" Text="{Binding Goal1}"/>
+            <Entry Placeholder="Goal 2"/>
+            <Entry Placeholder="Goal 3"/>
+            <Entry Placeholder="Goal 4"/>
+            <Entry Placeholder="Goal 5"/>
+            <Button Command="{Binding SaveCommand}"/>
+
+            <!--<Label Text="{Binding testModel.Day}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

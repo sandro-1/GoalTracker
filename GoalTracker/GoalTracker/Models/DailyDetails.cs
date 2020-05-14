@@ -12,13 +12,10 @@ namespace GoalTracker.Models
         public string Day { get; set; }
         public string Month { get; set; }
         public string Year { get; set; }
-        string Goal1 { get; set; }
-        string Goal2 { get; set; }
-        string Goal3 { get; set; }
-        string Goal4 { get; set; }
-        string Goal5 { get; set; }
-        string Goal6 { get; set; }
-        string Goal7 { get; set; }
-        string Goal8 { get; set; }
+        public string Goal1 { get; set; }
+        public string Goal2 { get; set; }
+        public string Goal3 { get; set; }
+        public string Goal4 { get; set; }
+        public string Goal5 { get; set; }
     }
 }

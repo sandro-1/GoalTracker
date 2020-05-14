@@ -85,6 +85,11 @@ namespace GoalTracker
             MonthYear = Month.Substring(0,3) + " " + YearInt.ToString();
             ChangeMonth();
 
+            //App.Database.DeleteEverythingAsync();
+            var result = App.Database.GetDetailAsync();
+            var resultList = result.Result;
+            var testDetail = result.Result.FirstOrDefault();
+
             LeftArrowClick = new Command(() =>
             {
                 MonthInt--;
@@ -110,8 +115,9 @@ namespace GoalTracker
                 MonthYear = Month.Substring(0, 3) + " " + YearInt.ToString();
                 ChangeMonth();
             });
-            TapCommand = new Command<string>(OnTapped); 
+            TapCommand = new Command<string>(OnTapped);
 
+            //OnAppearing();
         }
 
         void ChangeMonth()
@@ -147,31 +153,33 @@ namespace GoalTracker
                 }
             }
         }
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    var result = await App.Database.GetCalendarAsync();
-        //    Month = result.FirstOrDefault().MonthList.FirstOrDefault().MonthName;
-        //}
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var result = await App.Database.GetDetailAsync();            
+        }
         public ICommand TapCommand { get; }
         public ICommand LeftArrowClick { get; }
         public ICommand RightArrowClick { get; }
         async void OnTapped(string day)
         {
-            DailyDetails dailyDetailTestInput = new DailyDetails
-            {
-                Day = day,
-                Month = "Month 1 Test",
-                Year = "Year 1 Test"
-            };
-
             //await App.Database.SaveDetailAsync(dailyDetailTestInput);
             //var result = await App.Database.GetDetailAsync();
 
-            DailyDetailsViewModel detailsViewModel = new DailyDetailsViewModel(dailyDetailTestInput.Day, dailyDetailTestInput.Month, dailyDetailTestInput.Year);
+            //creating new
+            DailyDetails details = new DailyDetails();
+            details.Day = day;
+            details.Month = Month;
+            details.Year = YearInt.ToString();
+            DailyDetailsViewModel detailsViewModel = new DailyDetailsViewModel(details);
             DailyDetailsPage dailyPage = new DailyDetailsPage();
             dailyPage.BindingContext = detailsViewModel;
+            dailyPage.Disappearing += (sender, e) => //calls onappearing after detailpage is popped
+            { 
+                this.OnAppearing(); 
+            };
             await Application.Current.MainPage.Navigation.PushAsync(dailyPage);
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
