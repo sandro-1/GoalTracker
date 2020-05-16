@@ -30,8 +30,7 @@ namespace GoalTracker.ViewModels
             SaveCommand = new Command(() =>
             {
                 detailsModel.Goal1 = Goal1;
-                App.Database.SaveDetailAsync(detailsModel);
-                
+                App.Database.SaveDetailAsync(detailsModel);                
                 Application.Current.MainPage.Navigation.PopAsync();
             });
         }

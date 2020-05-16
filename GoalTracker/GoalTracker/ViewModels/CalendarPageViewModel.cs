@@ -15,7 +15,18 @@ namespace GoalTracker
 {
     class CalendarPageViewModel : ContentPage, INotifyPropertyChanged
     {
-        public string month { get; set; }
+        List<DailyDetails> dailyDetailList { get; set; }
+        public List<DailyDetails> DailyDetailList
+        {
+            get => dailyDetailList;
+            set
+            {
+                dailyDetailList = value;
+                var arg = new PropertyChangedEventArgs(nameof(DailyDetailList));
+                PropertyChanged?.Invoke(this, arg);
+            }
+        }
+        string month { get; set; }
         public string Month
         {
             get => month;
@@ -27,7 +38,7 @@ namespace GoalTracker
             }
         }
 
-        public string monthYear { get; set; }
+        string monthYear { get; set; }
         public string MonthYear
         {
             get => monthYear;
@@ -86,9 +97,8 @@ namespace GoalTracker
             ChangeMonth();
 
             //App.Database.DeleteEverythingAsync();
-            var result = App.Database.GetDetailAsync();
-            var resultList = result.Result;
-            var testDetail = result.Result.FirstOrDefault();
+            var result = App.Database.GetDetailAsync(Month, YearInt.ToString());
+            DailyDetailList = result.Result.OrderBy(d => d.Day).ToList();
 
             LeftArrowClick = new Command(() =>
             {
@@ -116,8 +126,6 @@ namespace GoalTracker
                 ChangeMonth();
             });
             TapCommand = new Command<string>(OnTapped);
-
-            //OnAppearing();
         }
 
         void ChangeMonth()
@@ -156,7 +164,8 @@ namespace GoalTracker
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var result = await App.Database.GetDetailAsync();            
+            var result = await App.Database.GetDetailAsync(Month, YearInt.ToString());
+            DailyDetailList = result.OrderBy(d => d.Day).ToList();
         }
         public ICommand TapCommand { get; }
         public ICommand LeftArrowClick { get; }
@@ -175,8 +184,8 @@ namespace GoalTracker
             DailyDetailsPage dailyPage = new DailyDetailsPage();
             dailyPage.BindingContext = detailsViewModel;
             dailyPage.Disappearing += (sender, e) => //calls onappearing after detailpage is popped
-            { 
-                this.OnAppearing(); 
+            {
+                this.OnAppearing();
             };
             await Application.Current.MainPage.Navigation.PushAsync(dailyPage);
             

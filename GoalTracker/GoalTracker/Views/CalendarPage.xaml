@@ -71,47 +71,112 @@
 
         <!--DAYS 1-7-->
         <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="0" Text="1" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="0">
+            <Label Text="1" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[0].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <!--<Label Text="Test" BackgroundColor="PeachPuff" Margin="2,1,2,1" FontSize="Micro" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Test" BackgroundColor="PeachPuff" Margin="2,1,2,1" FontSize="Micro" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>-->
+        </StackLayout>
+        
         <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="1" Text="2" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="2"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="1" Text="2" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="2"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[1].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="2"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
         <BoxView Grid.Row="1" Grid.Column="2" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="2" Text="3" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="3"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="2" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="2" Text="3" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="3"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[2].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="3"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
         <BoxView Grid.Row="1" Grid.Column="3" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="3" Text="4" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="4"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="3" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="3" Text="4" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="4"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[3].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="4"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+        
         <BoxView Grid.Row="1" Grid.Column="4" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="4" Text="5" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="5"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="4" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="4" Text="5" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="5"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[4].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="5"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
         <BoxView Grid.Row="1" Grid.Column="5" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="5" Text="6" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="6"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="5" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="5" Text="6" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="6"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[5].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="6"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
         <BoxView Grid.Row="1" Grid.Column="6" BackgroundColor="White"/>
-        <Label Grid.Row="1" Grid.Column="6" Text="7" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="7"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Grid.Row="1" Grid.Column="6" Spacing="0">
+            <Label Grid.Row="1" Grid.Column="6" Text="7" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="7"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DailyDetailList[6].Goal1}" BackgroundColor="PeachPuff" LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="7"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
 
         <!--DAYS 8-14-->
         <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="White"/>
