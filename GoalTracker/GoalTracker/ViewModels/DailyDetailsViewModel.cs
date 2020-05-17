@@ -10,27 +10,59 @@ namespace GoalTracker.ViewModels
 {
     public class DailyDetailsViewModel : ContentPage, INotifyPropertyChanged 
     {
-        public DailyDetails detailsModel { get; set; }
-
-        string goal1;
-        public string Goal1 
+        DailyDetails detailsModel;
+        public DailyDetails DetailsModel 
         { 
-            get => goal1; 
+            get => detailsModel; 
             set
             {
-                goal1 = value;
-                var arg = new PropertyChangedEventArgs(nameof(Goal1));
+                detailsModel = value;
+                var args = new PropertyChangedEventArgs(nameof(DetailsModel));
+                PropertyChanged?.Invoke(this, args);
+            }                
+        }
+
+        bool labelsVisible;
+        public bool LabelsVisible
+        {
+            get => labelsVisible;
+            set
+            {
+                labelsVisible = value;
+                var arg = new PropertyChangedEventArgs(nameof(LabelsVisible));
+                PropertyChanged?.Invoke(this, arg);
+            }
+        }
+
+        bool entriesVisible;
+        public bool EntriesVisible
+        {
+            get => entriesVisible;
+            set
+            {
+                entriesVisible = value;
+                var arg = new PropertyChangedEventArgs(nameof(EntriesVisible));
                 PropertyChanged?.Invoke(this, arg);
             }
         }
         public DailyDetailsViewModel(DailyDetails details)
         {
-            detailsModel = details;
+            DetailsModel = details;
+
+            if (DetailsModel.Goal1 != null)
+            {
+                LabelsVisible = true;
+                EntriesVisible = false;
+            }
+            else
+            {
+                LabelsVisible = false;
+                EntriesVisible = true;
+            }
 
             SaveCommand = new Command(() =>
             {
-                detailsModel.Goal1 = Goal1;
-                App.Database.SaveDetailAsync(detailsModel);                
+                App.Database.SaveDetailAsync(DetailsModel);                
                 Application.Current.MainPage.Navigation.PopAsync();
             });
         }

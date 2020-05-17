@@ -7,18 +7,24 @@
              mc:Ignorable="d"
              x:Class="GoalTracker.Views.DailyDetailsPage">
 
-    <ContentPage.Content>
-        <StackLayout>
-            <Entry Placeholder="Goal 1" Text="{Binding Goal1}"/>
-            <Entry Placeholder="Goal 2"/>
-            <Entry Placeholder="Goal 3"/>
-            <Entry Placeholder="Goal 4"/>
-            <Entry Placeholder="Goal 5"/>
-            <Button Command="{Binding SaveCommand}"/>
-
-            <!--<Label Text="{Binding testModel.Day}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />-->
+    
+    <StackLayout>
+        <StackLayout IsVisible="{Binding EntriesVisible}">
+            <Entry Placeholder="Goal 1" Text="{Binding DetailsModel.Goal1}"/>
+            <Entry Placeholder="Goal 2" Text="{Binding DetailsModel.Goal2}"/>
+            <Entry Placeholder="Goal 3" Text="{Binding DetailsModel.Goal3}"/>
+            <Entry Placeholder="Goal 4" Text="{Binding DetailsModel.Goal4}"/>
+            <Entry Placeholder="Goal 5" Text="{Binding DetailsModel.Goal5}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
         </StackLayout>
-    </ContentPage.Content>
+
+        <StackLayout IsVisible="{Binding LabelsVisible}">
+            <Label Text="{Binding DetailsModel.Goal1}"/>
+            <Label Text="{Binding DetailsModel.Goal2}"/>
+            <Label Text="{Binding DetailsModel.Goal3}"/>
+            <Label Text="{Binding DetailsModel.Goal4}"/>
+            <Label Text="{Binding DetailsModel.Goal5}"/>
+        </StackLayout>
+    </StackLayout>
+    
 </ContentPage>

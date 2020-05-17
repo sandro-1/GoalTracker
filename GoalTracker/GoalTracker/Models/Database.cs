@@ -17,14 +17,13 @@ namespace GoalTracker.Models
         }
 
         public Task<List<DailyDetails>> GetDetailAsync(string month, string year)
-        {
-            //return _database.Table<DailyDetails>().ToListAsync();
+        {            
             return _database.Table<DailyDetails>().Where(d => d.Month == month && d.Year == year).ToListAsync();
         }
 
-        public Task<int> SaveDetailAsync(DailyDetails detail)
+        public void SaveDetailAsync(DailyDetails detail)
         {
-            return _database.InsertAsync(detail);
+            _database.InsertAsync(detail).Wait();
         }
 
         public Task<int> DeleteEverythingAsync()

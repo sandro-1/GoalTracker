@@ -89,16 +89,15 @@ namespace GoalTracker
         }
 
         public CalendarPageViewModel()
-        {                        
+        {
+            //App.Database.DeleteEverythingAsync();
             Month = DateTime.Now.ToString("MMMM");
             MonthInt = DateTime.Now.Month;
             YearInt = DateTime.Now.Year;
             MonthYear = Month.Substring(0,3) + " " + YearInt.ToString();
             ChangeMonth();
 
-            //App.Database.DeleteEverythingAsync();
-            var result = App.Database.GetDetailAsync(Month, YearInt.ToString());
-            DailyDetailList = result.Result.OrderBy(d => d.Day).ToList();
+            OnAppearing();
 
             LeftArrowClick = new Command(() =>
             {
@@ -165,23 +164,56 @@ namespace GoalTracker
         {
             base.OnAppearing();
             var result = await App.Database.GetDetailAsync(Month, YearInt.ToString());
-            DailyDetailList = result.OrderBy(d => d.Day).ToList();
+            List<DailyDetails> tempDetailList = new List<DailyDetails>();
+            for (int i = 0; i < 31; i++)
+            {
+                tempDetailList.Add(new DailyDetails());
+            }
+            var dbDetailsList = result.OrderBy(d => d.Day).ToList();
+
+            int detailListIncrement = 0;
+            for (int i = 0; i < tempDetailList.Count; i++)
+            {
+                if (dbDetailsList.ElementAtOrDefault(detailListIncrement) != null && (Convert.ToInt32(dbDetailsList[detailListIncrement].Day) - 1) == i)
+                {
+                    dbDetailsList[detailListIncrement].IsVisible = true;
+                    tempDetailList.RemoveAt(i);
+                    tempDetailList.Insert(i, dbDetailsList[detailListIncrement]);
+                    detailListIncrement++;
+                }
+                else
+                {
+                    tempDetailList[i].IsVisible = false; 
+                }
+            }
+
+            DailyDetailList = tempDetailList;
+
         }
         public ICommand TapCommand { get; }
         public ICommand LeftArrowClick { get; }
         public ICommand RightArrowClick { get; }
         async void OnTapped(string day)
         {
-            //await App.Database.SaveDetailAsync(dailyDetailTestInput);
-            //var result = await App.Database.GetDetailAsync();
+            DailyDetails details;
+            DailyDetailsViewModel detailsViewModel;
+            DailyDetailsPage dailyPage;            
+            int dayInt = Convert.ToInt32(day);
 
-            //creating new
-            DailyDetails details = new DailyDetails();
-            details.Day = day;
-            details.Month = Month;
-            details.Year = YearInt.ToString();
-            DailyDetailsViewModel detailsViewModel = new DailyDetailsViewModel(details);
-            DailyDetailsPage dailyPage = new DailyDetailsPage();
+            if (DailyDetailList.ElementAtOrDefault(dayInt - 1).Goal1 != null) //already there
+            {
+                details = DailyDetailList.ElementAtOrDefault(dayInt - 1);
+            }
+            else //creating new
+            {
+                details = new DailyDetails();
+                details.Day = day;
+                details.Month = Month;
+                details.Year = YearInt.ToString();
+            }
+            
+            detailsViewModel = new DailyDetailsViewModel(details);
+            dailyPage = new DailyDetailsPage();
             dailyPage.BindingContext = detailsViewModel;
             dailyPage.Disappearing += (sender, e) => //calls onappearing after detailpage is popped
             {

@@ -12,6 +12,7 @@ namespace GoalTracker.Models
         public string Day { get; set; }
         public string Month { get; set; }
         public string Year { get; set; }
+        public bool IsVisible { get; set; }
         public string Goal1 { get; set; }
         public string Goal2 { get; set; }
         public string Goal3 { get; set; }
