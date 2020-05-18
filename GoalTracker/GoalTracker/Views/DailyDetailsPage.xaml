@@ -19,11 +19,33 @@
         </StackLayout>
 
         <StackLayout IsVisible="{Binding LabelsVisible}">
-            <Label Text="{Binding DetailsModel.Goal1}"/>
-            <Label Text="{Binding DetailsModel.Goal2}"/>
-            <Label Text="{Binding DetailsModel.Goal3}"/>
-            <Label Text="{Binding DetailsModel.Goal4}"/>
-            <Label Text="{Binding DetailsModel.Goal5}"/>
+            <Label Text="{Binding DetailsModel.Goal1}" BackgroundColor="{Binding DetailsModel.Goal1Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal2}" BackgroundColor="{Binding DetailsModel.Goal2Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="2"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal3}" BackgroundColor="{Binding DetailsModel.Goal3Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="3"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal4}" BackgroundColor="{Binding DetailsModel.Goal4Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="4"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal5}" BackgroundColor="{Binding DetailsModel.Goal5Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="5"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
         </StackLayout>
     </StackLayout>
     

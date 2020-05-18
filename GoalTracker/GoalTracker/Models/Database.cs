@@ -22,8 +22,13 @@ namespace GoalTracker.Models
         }
 
         public void SaveDetailAsync(DailyDetails detail)
-        {
+        {            
             _database.InsertAsync(detail).Wait();
+        }
+
+        public void UpdateDetailAsync(DailyDetails detail)
+        {   
+            _database.UpdateAsync(detail);
         }
 
         public Task<int> DeleteEverythingAsync()

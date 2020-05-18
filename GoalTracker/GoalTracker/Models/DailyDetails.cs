@@ -17,6 +17,11 @@ namespace GoalTracker.Models
         public string Goal2 { get; set; }
         public string Goal3 { get; set; }
         public string Goal4 { get; set; }
-        public string Goal5 { get; set; }
+        public string Goal5 { get; set; }      
+        public string Goal1Progress { get; set; }
+        public string Goal2Progress { get; set; }
+        public string Goal3Progress { get; set; }
+        public string Goal4Progress { get; set; }
+        public string Goal5Progress { get; set; }
     }
 }

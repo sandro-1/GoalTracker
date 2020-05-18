@@ -45,14 +45,15 @@ namespace GoalTracker.ViewModels
                 PropertyChanged?.Invoke(this, arg);
             }
         }
+
         public DailyDetailsViewModel(DailyDetails details)
         {
             DetailsModel = details;
 
-            if (DetailsModel.Goal1 != null)
+            if (DetailsModel.ID != 0)
             {
                 LabelsVisible = true;
-                EntriesVisible = false;
+                EntriesVisible = false;                                
             }
             else
             {
@@ -62,12 +63,78 @@ namespace GoalTracker.ViewModels
 
             SaveCommand = new Command(() =>
             {
-                App.Database.SaveDetailAsync(DetailsModel);                
+                if (EntriesVisible == true)
+                {
+                    DetailsModel.Goal1Progress = DetailsModel.Goal1 != null ? "PeachPuff" : "White";
+                    DetailsModel.Goal2Progress = DetailsModel.Goal2 != null ? "PeachPuff" : "White";
+                    DetailsModel.Goal3Progress = DetailsModel.Goal3 != null ? "PeachPuff" : "White";
+                    DetailsModel.Goal4Progress = DetailsModel.Goal4 != null ? "PeachPuff" : "White";
+                    DetailsModel.Goal5Progress = DetailsModel.Goal5 != null ? "PeachPuff" : "White";
+                }
+
+                if (DetailsModel.ID != 0)
+                {
+                    var preUpdate = App.Database.GetDetailAsync(DetailsModel.Month, DetailsModel.Year).Result;
+                    App.Database.UpdateDetailAsync(DetailsModel);
+                    var postUpdate = App.Database.GetDetailAsync(DetailsModel.Month, DetailsModel.Year).Result;                    
+                }
+                else
+                {
+                    App.Database.SaveDetailAsync(DetailsModel);                    
+                }
                 Application.Current.MainPage.Navigation.PopAsync();
             });
+
+            ColorChangeCommand = new Command<string>(goal =>
+            {
+                if (DetailsModel.Goal1Progress == "PeachPuff" && goal == "1")
+                {
+                    DetailsModel.Goal1Progress = "LightGreen";
+                }
+                else if(DetailsModel.Goal1Progress == "LightGreen" && goal == "1")
+                {
+                    DetailsModel.Goal1Progress = "PeachPuff";
+                }
+                else if (DetailsModel.Goal2Progress == "PeachPuff" && goal == "2")
+                {
+                    DetailsModel.Goal2Progress = "LightGreen";
+                }
+                else if (DetailsModel.Goal2Progress == "LightGreen" && goal == "2")
+                {
+                    DetailsModel.Goal2Progress = "PeachPuff";
+                }
+                else if (DetailsModel.Goal3Progress == "PeachPuff" && goal == "3")
+                {
+                    DetailsModel.Goal3Progress = "LightGreen";
+                }
+                else if (DetailsModel.Goal3Progress == "LightGreen" && goal == "3")
+                {
+                    DetailsModel.Goal3Progress = "PeachPuff";
+                }
+                else if (DetailsModel.Goal4Progress == "PeachPuff" && goal == "4")
+                {
+                    DetailsModel.Goal4Progress = "LightGreen";
+                }
+                else if (DetailsModel.Goal4Progress == "LightGreen" && goal == "4")
+                {
+                    DetailsModel.Goal4Progress = "PeachPuff";
+                }
+                else if (DetailsModel.Goal5Progress == "PeachPuff" && goal == "5")
+                {
+                    DetailsModel.Goal5Progress = "LightGreen";
+                }
+                else if (DetailsModel.Goal5Progress == "LightGreen" && goal == "5")
+                {
+                    DetailsModel.Goal5Progress = "PeachPuff";
+                }
+
+                DetailsModel = DetailsModel;
+            });
+
         }
 
         public ICommand SaveCommand { get; }
+        public ICommand ColorChangeCommand { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 }

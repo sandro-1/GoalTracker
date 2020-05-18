@@ -91,6 +91,7 @@ namespace GoalTracker
         public CalendarPageViewModel()
         {
             //App.Database.DeleteEverythingAsync();
+
             Month = DateTime.Now.ToString("MMMM");
             MonthInt = DateTime.Now.Month;
             YearInt = DateTime.Now.Year;
@@ -209,7 +210,7 @@ namespace GoalTracker
                 details = new DailyDetails();
                 details.Day = day;
                 details.Month = Month;
-                details.Year = YearInt.ToString();
+                details.Year = YearInt.ToString();                
             }
             
             detailsViewModel = new DailyDetailsViewModel(details);
