@@ -88,6 +88,20 @@ namespace GoalTracker
             }
         }
 
+        //public CalendarPageViewModel(int month, int year)
+        //{
+        //    Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+        //    MonthYear = Month.Substring(0, 3) + " " + year.ToString();
+        //    ChangeMonth();
+        //    OnAppearing();
+        //}
+        public void ArrowClick(int month, int year)
+        {
+            Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+            MonthYear = Month.Substring(0, 3) + " " + year.ToString();
+            ChangeMonth();
+            OnAppearing();
+        }
         public CalendarPageViewModel()
         {
             //App.Database.DeleteEverythingAsync();
@@ -97,8 +111,9 @@ namespace GoalTracker
             YearInt = DateTime.Now.Year;
             MonthYear = Month.Substring(0,3) + " " + YearInt.ToString();
             ChangeMonth();
-
             OnAppearing();
+
+            //var result = App.Database.GetDetailAsync(Month, YearInt.ToString());
 
             LeftArrowClick = new Command(() =>
             {
@@ -108,9 +123,7 @@ namespace GoalTracker
                     MonthInt = 12;
                     YearInt--;
                 }
-                Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(MonthInt);
-                MonthYear = Month.Substring(0, 3) + " " + YearInt.ToString();
-                ChangeMonth();
+                ArrowClick(MonthInt, YearInt);
             });
 
             RightArrowClick = new Command(() =>
@@ -121,9 +134,7 @@ namespace GoalTracker
                     MonthInt = 1;
                     YearInt++;
                 }
-                Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(MonthInt);
-                MonthYear = Month.Substring(0, 3) + " " + YearInt.ToString();
-                ChangeMonth();
+                ArrowClick(MonthInt, YearInt);
             });
             TapCommand = new Command<string>(OnTapped);
         }
@@ -170,7 +181,7 @@ namespace GoalTracker
             {
                 tempDetailList.Add(new DailyDetails());
             }
-            var dbDetailsList = result.OrderBy(d => d.Day).ToList();
+            var dbDetailsList = result.OrderBy(d => Convert.ToInt32(d.Day)).ToList();
 
             int detailListIncrement = 0;
             for (int i = 0; i < tempDetailList.Count; i++)
@@ -187,7 +198,7 @@ namespace GoalTracker
                     tempDetailList[i].IsVisible = false; 
                 }
             }
-
+            
             DailyDetailList = tempDetailList;
 
         }

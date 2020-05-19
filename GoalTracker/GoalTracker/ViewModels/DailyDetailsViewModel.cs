@@ -65,11 +65,11 @@ namespace GoalTracker.ViewModels
             {
                 if (EntriesVisible == true)
                 {
-                    DetailsModel.Goal1Progress = DetailsModel.Goal1 != null ? "PeachPuff" : "White";
-                    DetailsModel.Goal2Progress = DetailsModel.Goal2 != null ? "PeachPuff" : "White";
-                    DetailsModel.Goal3Progress = DetailsModel.Goal3 != null ? "PeachPuff" : "White";
-                    DetailsModel.Goal4Progress = DetailsModel.Goal4 != null ? "PeachPuff" : "White";
-                    DetailsModel.Goal5Progress = DetailsModel.Goal5 != null ? "PeachPuff" : "White";
+                    DetailsModel.Goal1Progress = DetailsModel.Goal1 != null && DetailsModel.Goal1 != "" ? "PeachPuff" : "White";
+                    DetailsModel.Goal2Progress = DetailsModel.Goal2 != null && DetailsModel.Goal2 != "" ? "PeachPuff" : "White";
+                    DetailsModel.Goal3Progress = DetailsModel.Goal3 != null && DetailsModel.Goal3 != "" ? "PeachPuff" : "White";
+                    DetailsModel.Goal4Progress = DetailsModel.Goal4 != null && DetailsModel.Goal4 != "" ? "PeachPuff" : "White";
+                    DetailsModel.Goal5Progress = DetailsModel.Goal5 != null && DetailsModel.Goal5 != "" ? "PeachPuff" : "White";
                 }
 
                 if (DetailsModel.ID != 0)
