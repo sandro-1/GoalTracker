@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
             <ImageButton Command="{Binding LeftArrowClick}" Grid.Column="0" Source="leftArrow.png" BackgroundColor="DodgerBlue" Margin="3,10,17,10" HorizontalOptions="Center"/>
             <Label Text="{Binding MonthYear}" Grid.Column="1" Margin="0,0,20,0" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             <ImageButton Command="{Binding RightArrowClick}" Grid.Column="2" Source="rightArrow.png" BackgroundColor="DodgerBlue" Margin="0,10,20,10" HorizontalOptions="Center"/>
@@ -27,7 +27,6 @@
     </NavigationPage.TitleView>
 
     <Grid BackgroundColor="Gray" RowSpacing=".6" ColumnSpacing=".6">
-
         <Grid.RowDefinitions>
             <RowDefinition Height=".25*"/>
             <RowDefinition Height="*"/>
@@ -142,7 +141,7 @@
         <StackLayout Grid.Row="1" Grid.Column="4" Spacing="0">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="5"/>
-            </StackLayout.GestureRecognizers>   
+            </StackLayout.GestureRecognizers>
             <Label Text="5" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
             <Label Text="{Binding DailyDetailList[4].Goal1}" IsVisible="{Binding DailyDetailList[4].IsVisible}"
                   BackgroundColor="{Binding DailyDetailList[4].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
@@ -566,6 +565,7 @@
                    BackgroundColor="{Binding DailyDetailList[28].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
                    FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="White"/>
         <StackLayout Grid.Row="5" Grid.Column="1" Spacing="0">
             <StackLayout.GestureRecognizers>
@@ -582,6 +582,7 @@
                    BackgroundColor="{Binding DailyDetailList[29].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
                    FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="White"/>
         <StackLayout Grid.Row="5" Grid.Column="2" Spacing="0">
             <StackLayout.GestureRecognizers>
@@ -598,11 +599,11 @@
                    BackgroundColor="{Binding DailyDetailList[30].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
                    FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="3" BackgroundColor="White"/>
         <BoxView Grid.Row="5" Grid.Column="4" BackgroundColor="White"/>
         <BoxView Grid.Row="5" Grid.Column="5" BackgroundColor="White"/>
         <BoxView Grid.Row="5" Grid.Column="6" BackgroundColor="White"/>
-
     </Grid>
-
+    
 </ContentPage>

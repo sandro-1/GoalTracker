@@ -21,7 +21,6 @@ namespace GoalTracker.ViewModels
                 PropertyChanged?.Invoke(this, args);
             }                
         }
-
         bool labelsVisible;
         public bool LabelsVisible
         {
@@ -45,7 +44,6 @@ namespace GoalTracker.ViewModels
                 PropertyChanged?.Invoke(this, arg);
             }
         }
-
         public DailyDetailsViewModel(DailyDetails details)
         {
             DetailsModel = details;
@@ -130,9 +128,7 @@ namespace GoalTracker.ViewModels
 
                 DetailsModel = DetailsModel;
             });
-
         }
-
         public ICommand SaveCommand { get; }
         public ICommand ColorChangeCommand { get; }
 

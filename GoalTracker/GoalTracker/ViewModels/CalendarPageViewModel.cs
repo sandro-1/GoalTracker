@@ -37,7 +37,6 @@ namespace GoalTracker
                 PropertyChanged?.Invoke(this, arg);
             }
         }
-
         string monthYear { get; set; }
         public string MonthYear
         {
@@ -51,7 +50,6 @@ namespace GoalTracker
         }
         public int YearInt { get; set; }
         public int MonthInt { get; set; }
-
         bool showDate1 { get; set; }
         public bool ShowDate1 
         { 
@@ -88,13 +86,6 @@ namespace GoalTracker
             }
         }
 
-        //public CalendarPageViewModel(int month, int year)
-        //{
-        //    Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
-        //    MonthYear = Month.Substring(0, 3) + " " + year.ToString();
-        //    ChangeMonth();
-        //    OnAppearing();
-        //}
         public void ArrowClick(int month, int year)
         {
             Month = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
@@ -104,16 +95,12 @@ namespace GoalTracker
         }
         public CalendarPageViewModel()
         {
-            //App.Database.DeleteEverythingAsync();
-
             Month = DateTime.Now.ToString("MMMM");
             MonthInt = DateTime.Now.Month;
             YearInt = DateTime.Now.Year;
             MonthYear = Month.Substring(0,3) + " " + YearInt.ToString();
             ChangeMonth();
             OnAppearing();
-
-            //var result = App.Database.GetDetailAsync(Month, YearInt.ToString());
 
             LeftArrowClick = new Command(() =>
             {
@@ -143,7 +130,6 @@ namespace GoalTracker
         {
             var daysInCurrentMonth = DateTime.DaysInMonth(YearInt, MonthInt);
 
-            //adjust visibility on calendar days depending on month
             if (daysInCurrentMonth == 31)
             {
                 ShowDate1 = true;

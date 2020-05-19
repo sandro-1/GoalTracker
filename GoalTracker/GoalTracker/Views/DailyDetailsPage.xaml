@@ -7,45 +7,42 @@
              mc:Ignorable="d"
              x:Class="GoalTracker.Views.DailyDetailsPage">
 
-        <StackLayout>
-        
-            <StackLayout IsVisible="{Binding EntriesVisible}">
-                <Entry Placeholder="Goal 1" Text="{Binding DetailsModel.Goal1}"/>
-                <Entry Placeholder="Goal 2" Text="{Binding DetailsModel.Goal2}"/>
-                <Entry Placeholder="Goal 3" Text="{Binding DetailsModel.Goal3}"/>
-                <Entry Placeholder="Goal 4" Text="{Binding DetailsModel.Goal4}"/>
-                <Entry Placeholder="Goal 5" Text="{Binding DetailsModel.Goal5}"/>
-                <Button Text="Save" Command="{Binding SaveCommand}"/>
-            </StackLayout>
-        
-            <StackLayout IsVisible="{Binding LabelsVisible}">
-                <Label Text="{Binding DetailsModel.Goal1}" BackgroundColor="{Binding DetailsModel.Goal1Progress}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="1"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{Binding DetailsModel.Goal2}" BackgroundColor="{Binding DetailsModel.Goal2Progress}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="2"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{Binding DetailsModel.Goal3}" BackgroundColor="{Binding DetailsModel.Goal3Progress}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="3"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{Binding DetailsModel.Goal4}" BackgroundColor="{Binding DetailsModel.Goal4Progress}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="4"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="{Binding DetailsModel.Goal5}" BackgroundColor="{Binding DetailsModel.Goal5Progress}">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="5"/>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Button Text="Save" Command="{Binding SaveCommand}"/>
-            </StackLayout>
-    
+    <StackLayout>
+        <StackLayout IsVisible="{Binding EntriesVisible}">
+            <Entry Placeholder="Goal 1" Text="{Binding DetailsModel.Goal1}"/>
+            <Entry Placeholder="Goal 2" Text="{Binding DetailsModel.Goal2}"/>
+            <Entry Placeholder="Goal 3" Text="{Binding DetailsModel.Goal3}"/>
+            <Entry Placeholder="Goal 4" Text="{Binding DetailsModel.Goal4}"/>
+            <Entry Placeholder="Goal 5" Text="{Binding DetailsModel.Goal5}"/>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
         </StackLayout>
+        <StackLayout IsVisible="{Binding LabelsVisible}">
+            <Label Text="{Binding DetailsModel.Goal1}" BackgroundColor="{Binding DetailsModel.Goal1Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal2}" BackgroundColor="{Binding DetailsModel.Goal2Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="2"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal3}" BackgroundColor="{Binding DetailsModel.Goal3Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="3"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal4}" BackgroundColor="{Binding DetailsModel.Goal4Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="4"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="{Binding DetailsModel.Goal5}" BackgroundColor="{Binding DetailsModel.Goal5Progress}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ColorChangeCommand}" CommandParameter="5"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Button Text="Save" Command="{Binding SaveCommand}"/>
+        </StackLayout>
+    </StackLayout>
 </ContentPage>
