@@ -26,7 +26,7 @@
         </Grid>    
     </NavigationPage.TitleView>
 
-    <Grid BackgroundColor="Gray" RowSpacing=".6" ColumnSpacing=".6">
+    <Grid BackgroundColor="Gray" RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height=".25*"/>
             <RowDefinition Height="*"/>
@@ -34,6 +34,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="{Binding LastRow}"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -48,562 +49,703 @@
 
         <!--DAY LABELS-->
         <BoxView Grid.Row="0" Grid.Column="0" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="0" Text="Mon" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="0" Text="Sun" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="1" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="1" Text="Tue" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="1" Text="Mon" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="2" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="2" Text="Wed" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="2" Text="Tue" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="3" Text="Thu" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="3" Text="Wed" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="4" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="4" Text="Fri" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="4" Text="Thu" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="5" Text="Sat" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="5" Text="Fri" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <BoxView Grid.Row="0" Grid.Column="6" BackgroundColor="White"/>
-        <Label Grid.Row="0" Grid.Column="6" Text="Sun" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Grid.Row="0" Grid.Column="6" Text="Sat" FontSize="Micro" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
         <!--DAYS 1-7-->
         <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[0].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="1"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[0].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="1" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[0].Goal1}" IsVisible="{Binding DailyDetailList[0].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[0].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[0].Goal2}" IsVisible="{Binding DailyDetailList[0].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[0].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[0].Goal3}" IsVisible="{Binding DailyDetailList[0].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[0].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Goal1}" BackgroundColor="{Binding DailyDetailList[0].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Goal2}" BackgroundColor="{Binding DailyDetailList[0].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Goal3}" BackgroundColor="{Binding DailyDetailList[0].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Goal4}" BackgroundColor="{Binding DailyDetailList[0].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[0].Goal5}" BackgroundColor="{Binding DailyDetailList[0].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[1].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="2"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[1].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="2" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[1].Goal1}" IsVisible="{Binding DailyDetailList[1].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[1].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[1].Goal2}" IsVisible="{Binding DailyDetailList[1].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[1].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[1].Goal3}" IsVisible="{Binding DailyDetailList[1].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[1].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Goal1}" BackgroundColor="{Binding DailyDetailList[1].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Goal2}" BackgroundColor="{Binding DailyDetailList[1].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Goal3}" BackgroundColor="{Binding DailyDetailList[1].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Goal4}" BackgroundColor="{Binding DailyDetailList[1].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[1].Goal5}" BackgroundColor="{Binding DailyDetailList[1].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="2" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="2" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="2" Spacing="0" IsVisible="{Binding DailyDetailList[2].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="3"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[2].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="3" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[2].Goal1}" IsVisible="{Binding DailyDetailList[2].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[2].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[2].Goal2}" IsVisible="{Binding DailyDetailList[2].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[2].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[2].Goal3}" IsVisible="{Binding DailyDetailList[2].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[2].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Goal1}" BackgroundColor="{Binding DailyDetailList[2].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Goal2}" BackgroundColor="{Binding DailyDetailList[2].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Goal3}" BackgroundColor="{Binding DailyDetailList[2].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Goal4}" BackgroundColor="{Binding DailyDetailList[2].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[2].Goal5}" BackgroundColor="{Binding DailyDetailList[2].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="3" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="3" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="3" Spacing="0" IsVisible="{Binding DailyDetailList[3].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="4"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[3].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="4" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[3].Goal1}" IsVisible="{Binding DailyDetailList[3].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[3].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[3].Goal2}" IsVisible="{Binding DailyDetailList[3].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[3].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[3].Goal3}" IsVisible="{Binding DailyDetailList[3].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[3].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Goal1}" BackgroundColor="{Binding DailyDetailList[3].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Goal2}" BackgroundColor="{Binding DailyDetailList[3].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Goal3}" BackgroundColor="{Binding DailyDetailList[3].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Goal4}" BackgroundColor="{Binding DailyDetailList[3].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[3].Goal5}" BackgroundColor="{Binding DailyDetailList[3].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="4" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="4" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="4" Spacing="0" IsVisible="{Binding DailyDetailList[4].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="5"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[4].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="5" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[4].Goal1}" IsVisible="{Binding DailyDetailList[4].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[4].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[4].Goal2}" IsVisible="{Binding DailyDetailList[4].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[4].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[4].Goal3}" IsVisible="{Binding DailyDetailList[4].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[4].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Goal1}" BackgroundColor="{Binding DailyDetailList[4].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Goal2}" BackgroundColor="{Binding DailyDetailList[4].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Goal3}" BackgroundColor="{Binding DailyDetailList[4].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Goal4}" BackgroundColor="{Binding DailyDetailList[4].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[4].Goal5}" BackgroundColor="{Binding DailyDetailList[4].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="5" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="5" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="5" Spacing="0" IsVisible="{Binding DailyDetailList[5].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="6"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[5].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="6" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[5].Goal1}" IsVisible="{Binding DailyDetailList[5].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[5].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[5].Goal2}" IsVisible="{Binding DailyDetailList[5].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[5].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[5].Goal3}" IsVisible="{Binding DailyDetailList[5].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[5].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Goal1}" BackgroundColor="{Binding DailyDetailList[5].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Goal2}" BackgroundColor="{Binding DailyDetailList[5].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Goal3}" BackgroundColor="{Binding DailyDetailList[5].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Goal4}" BackgroundColor="{Binding DailyDetailList[5].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[5].Goal5}" BackgroundColor="{Binding DailyDetailList[5].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="1" Grid.Column="6" BackgroundColor="White"/>
-        <StackLayout Grid.Row="1" Grid.Column="6" Spacing="0">
+        <StackLayout Grid.Row="1" Grid.Column="6" Spacing="0" IsVisible="{Binding DailyDetailList[6].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="7"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[6].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[6].Goal1}" IsVisible="{Binding DailyDetailList[6].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[6].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[6].Goal2}" IsVisible="{Binding DailyDetailList[6].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[6].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[6].Goal3}" IsVisible="{Binding DailyDetailList[6].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[6].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Day}"  FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Goal1}" BackgroundColor="{Binding DailyDetailList[6].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Goal2}" BackgroundColor="{Binding DailyDetailList[6].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Goal3}" BackgroundColor="{Binding DailyDetailList[6].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Goal4}" BackgroundColor="{Binding DailyDetailList[6].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[6].Goal5}" BackgroundColor="{Binding DailyDetailList[6].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <!--DAYS 8-14-->
         <BoxView Grid.Row="2" Grid.Column="0" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="0" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[7].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="8"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[7].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="8" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[7].Goal1}" IsVisible="{Binding DailyDetailList[7].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[7].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[7].Goal2}" IsVisible="{Binding DailyDetailList[7].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[7].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[7].Goal3}" IsVisible="{Binding DailyDetailList[7].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[7].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Goal1}" BackgroundColor="{Binding DailyDetailList[7].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Goal2}" BackgroundColor="{Binding DailyDetailList[7].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Goal3}" BackgroundColor="{Binding DailyDetailList[7].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Goal4}" BackgroundColor="{Binding DailyDetailList[7].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[7].Goal5}" BackgroundColor="{Binding DailyDetailList[7].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="1" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="1" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[8].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="9"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[8].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="9" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[8].Goal1}" IsVisible="{Binding DailyDetailList[8].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[8].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[8].Goal2}" IsVisible="{Binding DailyDetailList[8].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[8].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[8].Goal3}" IsVisible="{Binding DailyDetailList[8].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[8].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Goal1}" BackgroundColor="{Binding DailyDetailList[8].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Goal2}" BackgroundColor="{Binding DailyDetailList[8].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Goal3}" BackgroundColor="{Binding DailyDetailList[8].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Goal4}" BackgroundColor="{Binding DailyDetailList[8].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[8].Goal5}" BackgroundColor="{Binding DailyDetailList[8].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="2" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="2" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="2" Spacing="0" IsVisible="{Binding DailyDetailList[9].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="10"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[9].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="10" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[9].Goal1}" IsVisible="{Binding DailyDetailList[9].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[9].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[9].Goal2}" IsVisible="{Binding DailyDetailList[9].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[9].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[9].Goal3}" IsVisible="{Binding DailyDetailList[9].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[9].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Goal1}" BackgroundColor="{Binding DailyDetailList[9].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Goal2}" BackgroundColor="{Binding DailyDetailList[9].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Goal3}" BackgroundColor="{Binding DailyDetailList[9].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Goal4}" BackgroundColor="{Binding DailyDetailList[9].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[9].Goal5}" BackgroundColor="{Binding DailyDetailList[9].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="3" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="3" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="3" Spacing="0" IsVisible="{Binding DailyDetailList[10].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="11"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[10].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="11" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[10].Goal1}" IsVisible="{Binding DailyDetailList[10].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[10].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[10].Goal2}" IsVisible="{Binding DailyDetailList[10].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[10].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[10].Goal3}" IsVisible="{Binding DailyDetailList[10].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[10].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Goal1}" BackgroundColor="{Binding DailyDetailList[10].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Goal2}" BackgroundColor="{Binding DailyDetailList[10].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Goal3}" BackgroundColor="{Binding DailyDetailList[10].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Goal4}" BackgroundColor="{Binding DailyDetailList[10].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[10].Goal5}" BackgroundColor="{Binding DailyDetailList[10].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="4" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="4" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="4" Spacing="0" IsVisible="{Binding DailyDetailList[11].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="12"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[11].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="12" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[11].Goal1}" IsVisible="{Binding DailyDetailList[11].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[11].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[11].Goal2}" IsVisible="{Binding DailyDetailList[11].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[11].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[11].Goal3}" IsVisible="{Binding DailyDetailList[11].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[11].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Goal1}" BackgroundColor="{Binding DailyDetailList[11].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Goal2}" BackgroundColor="{Binding DailyDetailList[11].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Goal3}" BackgroundColor="{Binding DailyDetailList[11].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Goal4}" BackgroundColor="{Binding DailyDetailList[11].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[11].Goal5}" BackgroundColor="{Binding DailyDetailList[11].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="5" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="5" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="5" Spacing="0" IsVisible="{Binding DailyDetailList[12].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="13"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[12].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="13" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[12].Goal1}" IsVisible="{Binding DailyDetailList[12].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[12].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[12].Goal2}" IsVisible="{Binding DailyDetailList[12].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[12].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[12].Goal3}" IsVisible="{Binding DailyDetailList[12].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[12].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Goal1}" BackgroundColor="{Binding DailyDetailList[12].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Goal2}" BackgroundColor="{Binding DailyDetailList[12].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Goal3}" BackgroundColor="{Binding DailyDetailList[12].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Goal4}" BackgroundColor="{Binding DailyDetailList[12].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[12].Goal5}" BackgroundColor="{Binding DailyDetailList[12].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="2" Grid.Column="6" BackgroundColor="White"/>
-        <StackLayout Grid.Row="2" Grid.Column="6" Spacing="0">
+        <StackLayout Grid.Row="2" Grid.Column="6" Spacing="0" IsVisible="{Binding DailyDetailList[13].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="14"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[13].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="14" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[13].Goal1}" IsVisible="{Binding DailyDetailList[13].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[13].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[13].Goal2}" IsVisible="{Binding DailyDetailList[13].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[13].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[13].Goal3}" IsVisible="{Binding DailyDetailList[13].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[13].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Goal1}" BackgroundColor="{Binding DailyDetailList[13].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Goal2}" BackgroundColor="{Binding DailyDetailList[13].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Goal3}" BackgroundColor="{Binding DailyDetailList[13].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Goal4}" BackgroundColor="{Binding DailyDetailList[13].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[13].Goal5}" BackgroundColor="{Binding DailyDetailList[13].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <!--DAYS 15-21-->
         <BoxView Grid.Row="3" Grid.Column="0" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="0" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[14].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="15"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[14].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="15" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[14].Goal1}" IsVisible="{Binding DailyDetailList[14].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[14].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[14].Goal2}" IsVisible="{Binding DailyDetailList[14].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[14].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[14].Goal3}" IsVisible="{Binding DailyDetailList[14].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[14].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Goal1}" BackgroundColor="{Binding DailyDetailList[14].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Goal2}" BackgroundColor="{Binding DailyDetailList[14].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Goal3}" BackgroundColor="{Binding DailyDetailList[14].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Goal4}" BackgroundColor="{Binding DailyDetailList[14].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[14].Goal5}" BackgroundColor="{Binding DailyDetailList[14].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="1" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[15].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="16"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[15].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="16" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[15].Goal1}" IsVisible="{Binding DailyDetailList[15].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[15].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[15].Goal2}" IsVisible="{Binding DailyDetailList[15].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[15].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[15].Goal3}" IsVisible="{Binding DailyDetailList[15].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[15].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Goal1}" BackgroundColor="{Binding DailyDetailList[15].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Goal2}" BackgroundColor="{Binding DailyDetailList[15].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Goal3}" BackgroundColor="{Binding DailyDetailList[15].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Goal4}" BackgroundColor="{Binding DailyDetailList[15].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[15].Goal5}" BackgroundColor="{Binding DailyDetailList[15].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="2" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="2" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="2" Spacing="0" IsVisible="{Binding DailyDetailList[16].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="17"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[16].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="17" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[16].Goal1}" IsVisible="{Binding DailyDetailList[16].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[16].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[16].Goal2}" IsVisible="{Binding DailyDetailList[16].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[16].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[16].Goal3}" IsVisible="{Binding DailyDetailList[16].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[16].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Goal1}" BackgroundColor="{Binding DailyDetailList[16].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Goal2}" BackgroundColor="{Binding DailyDetailList[16].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Goal3}" BackgroundColor="{Binding DailyDetailList[16].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Goal4}" BackgroundColor="{Binding DailyDetailList[16].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[16].Goal5}" BackgroundColor="{Binding DailyDetailList[16].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="3" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="3" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="3" Spacing="0" IsVisible="{Binding DailyDetailList[17].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="18"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[17].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="18" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[17].Goal1}" IsVisible="{Binding DailyDetailList[17].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[17].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[17].Goal2}" IsVisible="{Binding DailyDetailList[17].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[17].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[17].Goal3}" IsVisible="{Binding DailyDetailList[17].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[17].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Goal1}" BackgroundColor="{Binding DailyDetailList[17].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Goal2}" BackgroundColor="{Binding DailyDetailList[17].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Goal3}" BackgroundColor="{Binding DailyDetailList[17].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Goal4}" BackgroundColor="{Binding DailyDetailList[17].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[17].Goal5}" BackgroundColor="{Binding DailyDetailList[17].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="4" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="4" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="4" Spacing="0" IsVisible="{Binding DailyDetailList[18].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="19"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[18].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="19" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[18].Goal1}" IsVisible="{Binding DailyDetailList[18].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[18].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[18].Goal2}" IsVisible="{Binding DailyDetailList[18].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[18].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[18].Goal3}" IsVisible="{Binding DailyDetailList[18].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[18].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Goal1}" BackgroundColor="{Binding DailyDetailList[18].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Goal2}" BackgroundColor="{Binding DailyDetailList[18].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Goal3}" BackgroundColor="{Binding DailyDetailList[18].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Goal4}" BackgroundColor="{Binding DailyDetailList[18].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[18].Goal5}" BackgroundColor="{Binding DailyDetailList[18].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="5" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="5" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="5" Spacing="0" IsVisible="{Binding DailyDetailList[19].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="20"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[19].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="20" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[19].Goal1}" IsVisible="{Binding DailyDetailList[19].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[19].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[19].Goal2}" IsVisible="{Binding DailyDetailList[19].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[19].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[19].Goal3}" IsVisible="{Binding DailyDetailList[19].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[19].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Goal1}" BackgroundColor="{Binding DailyDetailList[19].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Goal2}" BackgroundColor="{Binding DailyDetailList[19].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Goal3}" BackgroundColor="{Binding DailyDetailList[19].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Goal4}" BackgroundColor="{Binding DailyDetailList[19].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[19].Goal5}" BackgroundColor="{Binding DailyDetailList[19].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="3" Grid.Column="6" BackgroundColor="White"/>
-        <StackLayout Grid.Row="3" Grid.Column="6" Spacing="0">
+        <StackLayout Grid.Row="3" Grid.Column="6" Spacing="0" IsVisible="{Binding DailyDetailList[20].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="21"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[20].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="21" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[20].Goal1}" IsVisible="{Binding DailyDetailList[20].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[20].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[20].Goal2}" IsVisible="{Binding DailyDetailList[20].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[20].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[20].Goal3}" IsVisible="{Binding DailyDetailList[20].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[20].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Goal1}" BackgroundColor="{Binding DailyDetailList[20].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Goal2}" BackgroundColor="{Binding DailyDetailList[20].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Goal3}" BackgroundColor="{Binding DailyDetailList[20].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Goal4}" BackgroundColor="{Binding DailyDetailList[20].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[20].Goal5}" BackgroundColor="{Binding DailyDetailList[20].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <!--DAYS 22-28-->
         <BoxView Grid.Row="4" Grid.Column="0" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="0" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[21].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="22"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[21].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="22" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[21].Goal1}" IsVisible="{Binding DailyDetailList[21].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[21].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[21].Goal2}" IsVisible="{Binding DailyDetailList[21].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[21].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[21].Goal3}" IsVisible="{Binding DailyDetailList[21].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[21].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Goal1}" BackgroundColor="{Binding DailyDetailList[21].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Goal2}" BackgroundColor="{Binding DailyDetailList[21].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Goal3}" BackgroundColor="{Binding DailyDetailList[21].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Goal4}" BackgroundColor="{Binding DailyDetailList[21].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[21].Goal5}" BackgroundColor="{Binding DailyDetailList[21].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="1" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="1" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[22].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="23"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[22].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="23" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[22].Goal1}" IsVisible="{Binding DailyDetailList[22].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[22].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[22].Goal2}" IsVisible="{Binding DailyDetailList[22].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[22].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[22].Goal3}" IsVisible="{Binding DailyDetailList[22].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[22].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Goal1}" BackgroundColor="{Binding DailyDetailList[22].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Goal2}" BackgroundColor="{Binding DailyDetailList[22].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Goal3}" BackgroundColor="{Binding DailyDetailList[22].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Goal4}" BackgroundColor="{Binding DailyDetailList[22].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[22].Goal5}" BackgroundColor="{Binding DailyDetailList[22].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="2" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="2" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="2" Spacing="0" IsVisible="{Binding DailyDetailList[23].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="24"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[23].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="24" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[23].Goal1}" IsVisible="{Binding DailyDetailList[23].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[23].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[23].Goal2}" IsVisible="{Binding DailyDetailList[23].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[23].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[23].Goal3}" IsVisible="{Binding DailyDetailList[23].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[23].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Goal1}" BackgroundColor="{Binding DailyDetailList[23].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Goal2}" BackgroundColor="{Binding DailyDetailList[23].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Goal3}" BackgroundColor="{Binding DailyDetailList[23].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Goal4}" BackgroundColor="{Binding DailyDetailList[23].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[23].Goal5}" BackgroundColor="{Binding DailyDetailList[23].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="3" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="3" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="3" Spacing="0" IsVisible="{Binding DailyDetailList[24].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="25"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[24].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="25" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[24].Goal1}" IsVisible="{Binding DailyDetailList[24].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[24].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[24].Goal2}" IsVisible="{Binding DailyDetailList[24].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[24].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[24].Goal3}" IsVisible="{Binding DailyDetailList[24].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[24].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Goal1}" BackgroundColor="{Binding DailyDetailList[24].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Goal2}" BackgroundColor="{Binding DailyDetailList[24].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Goal3}" BackgroundColor="{Binding DailyDetailList[24].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Goal4}" BackgroundColor="{Binding DailyDetailList[24].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[24].Goal5}" BackgroundColor="{Binding DailyDetailList[24].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="4" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="4" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="4" Spacing="0" IsVisible="{Binding DailyDetailList[25].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="26"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[25].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="26" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[25].Goal1}" IsVisible="{Binding DailyDetailList[25].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[25].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[25].Goal2}" IsVisible="{Binding DailyDetailList[25].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[25].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[25].Goal3}" IsVisible="{Binding DailyDetailList[25].IsVisible}"
-                  BackgroundColor="{Binding DailyDetailList[25].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                  FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Goal1}" BackgroundColor="{Binding DailyDetailList[25].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Goal2}" BackgroundColor="{Binding DailyDetailList[25].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Goal3}" BackgroundColor="{Binding DailyDetailList[25].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Goal4}" BackgroundColor="{Binding DailyDetailList[25].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[25].Goal5}" BackgroundColor="{Binding DailyDetailList[25].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="5" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="5" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="5" Spacing="0" IsVisible="{Binding DailyDetailList[26].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="27"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[26].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="27" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[26].Goal1}" IsVisible="{Binding DailyDetailList[26].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[26].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[26].Goal2}" IsVisible="{Binding DailyDetailList[26].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[26].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[26].Goal3}" IsVisible="{Binding DailyDetailList[26].IsVisible}"
-                   BackgroundColor="{Binding DailyDetailList[26].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Goal1}" BackgroundColor="{Binding DailyDetailList[26].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Goal2}" BackgroundColor="{Binding DailyDetailList[26].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Goal3}" BackgroundColor="{Binding DailyDetailList[26].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Goal4}" BackgroundColor="{Binding DailyDetailList[26].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[26].Goal5}" BackgroundColor="{Binding DailyDetailList[26].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="4" Grid.Column="6" BackgroundColor="White"/>
-        <StackLayout Grid.Row="4" Grid.Column="6" Spacing="0">
+        <StackLayout Grid.Row="4" Grid.Column="6" Spacing="0" IsVisible="{Binding DailyDetailList[27].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="28"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[27].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="28" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[27].Goal1}" IsVisible="{Binding DailyDetailList[27].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[27].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[27].Goal2}" IsVisible="{Binding DailyDetailList[27].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[27].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[27].Goal3}" IsVisible="{Binding DailyDetailList[27].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[27].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Goal1}" BackgroundColor="{Binding DailyDetailList[27].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Goal2}" BackgroundColor="{Binding DailyDetailList[27].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Goal3}" BackgroundColor="{Binding DailyDetailList[27].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Goal4}" BackgroundColor="{Binding DailyDetailList[27].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[27].Goal5}" BackgroundColor="{Binding DailyDetailList[27].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
-        <!--DAYS 29-31-->
+        <!--DAYS 29-35-->
         <BoxView Grid.Row="5" Grid.Column="0" BackgroundColor="White"/>
-        <StackLayout Grid.Row="5" Grid.Column="0" Spacing="0">
+        <StackLayout Grid.Row="5" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[28].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="29"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[28].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="29" IsVisible="{Binding ShowDate1}" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[28].Goal1}" IsVisible="{Binding DailyDetailList[28].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[28].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[28].Goal2}" IsVisible="{Binding DailyDetailList[28].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[28].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[28].Goal3}" IsVisible="{Binding DailyDetailList[28].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[28].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Goal1}" BackgroundColor="{Binding DailyDetailList[28].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Goal2}" BackgroundColor="{Binding DailyDetailList[28].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Goal3}" BackgroundColor="{Binding DailyDetailList[28].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Goal4}" BackgroundColor="{Binding DailyDetailList[28].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[28].Goal5}" BackgroundColor="{Binding DailyDetailList[28].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="White"/>
-        <StackLayout Grid.Row="5" Grid.Column="1" Spacing="0">
+        <StackLayout Grid.Row="5" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[29].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="30"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[29].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="30" IsVisible="{Binding ShowDate2}" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[29].Goal1}" IsVisible="{Binding DailyDetailList[29].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[29].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[29].Goal2}" IsVisible="{Binding DailyDetailList[29].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[29].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[29].Goal3}" IsVisible="{Binding DailyDetailList[29].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[29].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Goal1}" BackgroundColor="{Binding DailyDetailList[29].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Goal2}" BackgroundColor="{Binding DailyDetailList[29].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Goal3}" BackgroundColor="{Binding DailyDetailList[29].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Goal4}" BackgroundColor="{Binding DailyDetailList[29].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[29].Goal5}" BackgroundColor="{Binding DailyDetailList[29].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="5" Grid.Column="2" BackgroundColor="White"/>
-        <StackLayout Grid.Row="5" Grid.Column="2" Spacing="0">
+        <StackLayout Grid.Row="5" Grid.Column="2" Spacing="0" IsVisible="{Binding DailyDetailList[30].IsVisible}">
             <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="31"/>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[30].Day}"/>
             </StackLayout.GestureRecognizers>
-            <Label Text="31" IsVisible="{Binding ShowDate3}" FontSize="Micro" Margin="0,2" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[30].Goal1}" IsVisible="{Binding DailyDetailList[30].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[30].Goal1Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[30].Goal2}" IsVisible="{Binding DailyDetailList[30].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[30].Goal2Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
-            <Label Text="{Binding DailyDetailList[30].Goal3}" IsVisible="{Binding DailyDetailList[30].IsVisible}" 
-                   BackgroundColor="{Binding DailyDetailList[30].Goal3Progress}" LineBreakMode="NoWrap" Margin="2,1,2,1" 
-                   FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Goal1}" BackgroundColor="{Binding DailyDetailList[30].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Goal2}" BackgroundColor="{Binding DailyDetailList[30].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Goal3}" BackgroundColor="{Binding DailyDetailList[30].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Goal4}" BackgroundColor="{Binding DailyDetailList[30].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[30].Goal5}" BackgroundColor="{Binding DailyDetailList[30].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
         <BoxView Grid.Row="5" Grid.Column="3" BackgroundColor="White"/>
+        <StackLayout Grid.Row="5" Grid.Column="3" Spacing="0" IsVisible="{Binding DailyDetailList[31].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[31].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[31].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[31].Goal1}" BackgroundColor="{Binding DailyDetailList[31].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[31].Goal2}" BackgroundColor="{Binding DailyDetailList[31].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[31].Goal3}" BackgroundColor="{Binding DailyDetailList[31].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[31].Goal4}" BackgroundColor="{Binding DailyDetailList[31].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[31].Goal5}" BackgroundColor="{Binding DailyDetailList[31].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="4" BackgroundColor="White"/>
+        <StackLayout Grid.Row="5" Grid.Column="4" Spacing="0" IsVisible="{Binding DailyDetailList[32].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[32].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[32].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[32].Goal1}" BackgroundColor="{Binding DailyDetailList[32].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[32].Goal2}" BackgroundColor="{Binding DailyDetailList[32].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[32].Goal3}" BackgroundColor="{Binding DailyDetailList[32].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[32].Goal4}" BackgroundColor="{Binding DailyDetailList[32].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[32].Goal5}" BackgroundColor="{Binding DailyDetailList[32].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="5" BackgroundColor="White"/>
+        <StackLayout Grid.Row="5" Grid.Column="5" Spacing="0" IsVisible="{Binding DailyDetailList[33].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[33].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[33].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[33].Goal1}" BackgroundColor="{Binding DailyDetailList[33].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[33].Goal2}" BackgroundColor="{Binding DailyDetailList[33].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[33].Goal3}" BackgroundColor="{Binding DailyDetailList[33].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[33].Goal4}" BackgroundColor="{Binding DailyDetailList[33].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[33].Goal5}" BackgroundColor="{Binding DailyDetailList[33].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
         <BoxView Grid.Row="5" Grid.Column="6" BackgroundColor="White"/>
+        <StackLayout Grid.Row="5" Grid.Column="6" Spacing="0" IsVisible="{Binding DailyDetailList[34].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[34].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[34].Day}" FontSize="Micro" Margin="0,1" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[34].Goal1}" BackgroundColor="{Binding DailyDetailList[34].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[34].Goal2}" BackgroundColor="{Binding DailyDetailList[34].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[34].Goal3}" BackgroundColor="{Binding DailyDetailList[34].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[34].Goal4}" BackgroundColor="{Binding DailyDetailList[34].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[34].Goal5}" BackgroundColor="{Binding DailyDetailList[34].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+    
+        <!--36-42-->
+        <BoxView Grid.Row="6" Grid.Column="0" BackgroundColor="White"/>
+        <StackLayout Grid.Row="6" Grid.Column="0" Spacing="0" IsVisible="{Binding DailyDetailList[35].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[35].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[35].Day}" FontSize="Micro" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[35].Goal1}" BackgroundColor="{Binding DailyDetailList[35].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[35].Goal2}" BackgroundColor="{Binding DailyDetailList[35].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[35].Goal3}" BackgroundColor="{Binding DailyDetailList[35].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[35].Goal4}" BackgroundColor="{Binding DailyDetailList[35].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[35].Goal5}" BackgroundColor="{Binding DailyDetailList[35].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <BoxView Grid.Row="6" Grid.Column="1" BackgroundColor="White"/>
+        <StackLayout Grid.Row="6" Grid.Column="1" Spacing="0" IsVisible="{Binding DailyDetailList[36].IsVisible}">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding DailyDetailList[36].Day}"/>
+            </StackLayout.GestureRecognizers>
+            <Label Text="{Binding DailyDetailList[36].Day}" FontSize="Micro" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[36].Goal1}" BackgroundColor="{Binding DailyDetailList[36].Goal1Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[36].Goal2}" BackgroundColor="{Binding DailyDetailList[36].Goal2Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[36].Goal3}" BackgroundColor="{Binding DailyDetailList[36].Goal3Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[36].Goal4}" BackgroundColor="{Binding DailyDetailList[36].Goal4Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+            <Label Text="{Binding DailyDetailList[36].Goal5}" BackgroundColor="{Binding DailyDetailList[36].Goal5Progress}" 
+                   LineBreakMode="NoWrap" Margin="2,1,2,1" FontSize="8" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <BoxView Grid.Row="6" Grid.Column="2" BackgroundColor="White"/>
+        <BoxView Grid.Row="6" Grid.Column="3" BackgroundColor="White"/>
+        <BoxView Grid.Row="6" Grid.Column="4" BackgroundColor="White"/>
+        <BoxView Grid.Row="6" Grid.Column="5" BackgroundColor="White"/>
+        <BoxView Grid.Row="6" Grid.Column="6" BackgroundColor="White"/>
     </Grid>
     
 </ContentPage>
